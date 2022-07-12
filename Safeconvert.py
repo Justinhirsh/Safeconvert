@@ -3,7 +3,7 @@ from pytube import YouTube
 import os
 from tkinter import filedialog
 print("Welcome to Safeconvert")
-type_of_vid = input("Please enter audio or video depending on what kind of file you want")
+type_of_vid = input("Please enter audio or video depending on what kind of file you want: ")
 format = input("Please enter your desired format (ex: .mp3 for audio or .mp4 for video): ")
 
 if type_of_vid == "audio" or "Audio":
