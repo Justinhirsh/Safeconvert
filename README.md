@@ -1,6 +1,4 @@
-Safeconvert is a quick script i made to not have to use those sketchy youtube to mp3 or mp4 websites
-it uses pytube, os, tkinter, and time (some come preinstalled im pretty sure)
-it is a simple program using terminal
-i have inclided a .ico file incase you would like to create a shortcut for it
-it takes about 2-5 seconds to download an average video
-Disclaimer: this script isnt truly less or more "sketchy" than any other youtube to mp3 or mp4 websites, i do not own any of the videos or audios downloaded
+Safeconvert is a youtube converter that can take a youtube video, download it and convert it to a diferent file type.
+It required ffmpy* and ctypes
+To set up ffmpy, use pip install ffmpy then follow the instructions on this website: https://www.geeksforgeeks.org/how-to-install-ffmpeg-on-windows/
+I included a .ico file in the repository if you want to create a shortcut to the script.
