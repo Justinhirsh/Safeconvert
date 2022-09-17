@@ -11,11 +11,11 @@ format = input("Please enter your desired format (ex: mp3 for audio or mp4 for v
 type_of_vid = input("Please enter if your video is a video or audio: ")
 desired_video = input("please input the link to your desired video or playlist: ")
 is_playlist = input("are you converting a video or playlist: ")
+dir_path = str(pathlib.Path(__file__).resolve().parent) + "\\"
 if is_playlist == "playlist":
     p = Playlist(desired_video)
     download_path = filedialog.askdirectory()
     print("downloading playlist")
-    dir_path = str(pathlib.Path(__file__).resolve().parent) + "\\"
     for video in p.videos:
         name = video.title.replace(" ", "_")
         video.streams.first().download(filename= name)
@@ -45,12 +45,12 @@ if is_playlist == "video":
         stream = yt.streams.filter().first()
     stream.download()
     ff = ffmpy.FFmpeg(
-        inputs={os.path.dirname(yt.title + ".mp4"): None},
-        outputs={os.path.dirname(yt.title + format): None}
+        inputs={dir_path + yt.title + ".mp4": None},
+        outputs={dir_path + yt.title + format: None}
     )
     ff.run()
-    os.remove(os.path.dirname(yt.title + ".mp4"))
-    shutil.move(os.path.dirname(yt.title + format), download_path)
+    os.remove(dir_path + yt.title + ".mp4")
+    shutil.move(dir_path + yt.title + format, download_path)
     print("Complete!")
     time.sleep(1000)
    
