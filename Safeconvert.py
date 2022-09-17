@@ -34,25 +34,25 @@ if is_playlist == "playlist":
         shutil.move(dir_path + name + format, download_path)
         print("downloaded " + name)
     print("complete!")
-    if is_playlist == "video":
-        yt = YouTube(desired_video)
-        yt.title = yt.title.replace(" ", "_")
-        print("downloading " + yt.title)
-        download_path = filedialog.askdirectory()
-        if type_of_vid == "audio" or "Audio":
-            stream = yt.streams.filter(only_audio= True).first()
-        else:
-             stream = yt.streams.filter().first()
-        stream.download()
-        ff = ffmpy.FFmpeg(
-            inputs={os.path.dirname(yt.title + ".mp4"): None},
-            outputs={os.path.dirname(yt.title + format): None}
-        )
-        ff.run()
-        os.remove(os.path.dirname(yt.title + ".mp4"))
-        shutil.move(os.path.dirname(yt.title + format), download_path)
-        print("Complete!")
-        time.sleep(1000)
+if is_playlist == "video":
+    yt = YouTube(desired_video)
+    yt.title = yt.title.replace(" ", "_")
+    print("downloading " + yt.title)
+    download_path = filedialog.askdirectory()
+    if type_of_vid == "audio" or "Audio":
+        stream = yt.streams.filter(only_audio= True).first()
+    else:
+        stream = yt.streams.filter().first()
+    stream.download()
+    ff = ffmpy.FFmpeg(
+        inputs={os.path.dirname(yt.title + ".mp4"): None},
+        outputs={os.path.dirname(yt.title + format): None}
+    )
+    ff.run()
+    os.remove(os.path.dirname(yt.title + ".mp4"))
+    shutil.move(os.path.dirname(yt.title + format), download_path)
+    print("Complete!")
+    time.sleep(1000)
    
 
 
